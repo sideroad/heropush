@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]; then
+  commit="update"
+else
+  commit=$1
+fi
+git add --all
+git commit -m "${commit}"
+git push heroku master -f
+git push origin master
+heroku logs --tail
+
